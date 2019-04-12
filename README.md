@@ -48,6 +48,10 @@ export default {
 }
 </script>
 ~~~
+效果展示：
+
+![单个图片预览](http://vue2-viewer.cn-bj.ufileos.com/vue2-viewer-single.gif)
+
 ##### 多图片模式
 props
 
@@ -121,3 +125,8 @@ a {
 }
 </style>
 ~~~
+
+效果展示：
+
+![单个图片预览](http://vue2-viewer.cn-bj.ufileos.com/vue2-viewer-multi.gif)
+

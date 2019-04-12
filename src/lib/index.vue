@@ -20,7 +20,7 @@
         <div class="viewer-canvas" data-viewer-action="hide">
           <img ref="fullImage" @mousewheel="toggleZoomFullImage" 
             :src="Array.isArray(full) ? full[listActiveIndex] : full" 
-            id="full-image" alt="" class="viewer-move full-image"
+            id="full-image" alt="" class="viewer-move full-image animate-transform"
             :style="fullImageStyle" />
         </div>
         <div class="viewer-footer">
@@ -34,7 +34,7 @@
               <li role="button" class="viewer-one-to-one" @click="resetFullImageSize" data-viewer-action="one-to-one"></li>
               <li role="button" class="viewer-reset" @click="resetFullImage" data-viewer-action="reset"></li>
               <li role="button" class="viewer-prev" @click="prev" v-if="multiple" data-viewer-action="prev"></li>
-              <li role="button" class="viewer-play viewer-large" v-if="multiple" data-viewer-action="play"></li>
+              <li role="button" class="viewer-play viewer-large" @click="fullScreenPlay" v-if="multiple" data-viewer-action="play"></li>
               <li role="button" class="viewer-next" @click="next" v-if="multiple" data-viewer-action="next"></li>
               <li role="button" class="viewer-rotate-left" @click="fullImageRotateLeft" data-viewer-action="rotate-left"></li>
               <li role="button" class="viewer-rotate-right" @click="fullImageRotateRight" data-viewer-action="rotate-right"></li>
@@ -71,6 +71,8 @@ export default {
   mixins: [MxinMethods],
   data() {
     return {
+      animateTimer: null,
+      fullPlayTimer: null,
       fullViewerVisible: false,
       fullViewZoom: 1,
       fullImageWidth: 0,
@@ -129,6 +131,8 @@ export default {
   },
   methods: {},
   mounted() {
+    this.resetFullImage();
+    this.addFullScreenListener();
     this.$refs['fullImage'].addEventListener('mousedown', () => {
       document.body.addEventListener('mousemove', this.mouseMove);
     });

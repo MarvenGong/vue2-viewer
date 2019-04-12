@@ -1,8 +1,29 @@
 export default {
   methods: {
+    /**
+     * 全屏显示
+     * @param {Object} el 要全屏显示的dom节点
+     */
+    fullScreen(el){
+      const isFullscreen=document.fullScreen||document.mozFullScreen||document.webkitIsFullScreen;
+      if(!isFullscreen){//进入全屏,多重短路表达式
+        (el.requestFullscreen&&el.requestFullscreen())||
+        (el.mozRequestFullScreen&&el.mozRequestFullScreen())||
+        (el.webkitRequestFullscreen&&el.webkitRequestFullscreen())||(el.msRequestFullscreen&&el.msRequestFullscreen());
+      }else{	//退出全屏,三目运算符
+        document.exitFullscreen?document.exitFullscreen():
+        document.mozCancelFullScreen?document.mozCancelFullScreen():
+        document.webkitExitFullscreen?document.webkitExitFullscreen():'';
+      }
+    },
+    /**
+     * 重置大图的状态
+     * @param {*} index 
+     */
     resetFullImageStatus(index) {
       this.$data.listActiveIndex = index;
       var img = this.$refs['fullImage'];
+      if (!img) return false;
       img.style.display = 'none';
       setTimeout(() => {
         let fullImageSizeAry = this.getImgNaturalStyle(img);
@@ -11,6 +32,10 @@ export default {
         img.style.display = '';
       }, 300);
     },
+    /**
+     * 显示大图，如果是多图需要指定显示的图片的序号
+     * @param {Number} index 
+     */
     showFullViewer(index) {
       this.$data.fullViewerVisible = true;
       this.resetFullImageStatus(index);
@@ -38,15 +63,20 @@ export default {
      */
     toggleZoomFullImage(obj) {
       // const zoom = parseInt(obj.style.zoom,10)||100;
+      if(this.$data.animateTimer) {
+        clearTimeout(this.$data.animateTimer);
+        this.$data.animateTimer = null;
+      }
+      obj.target.classList.remove('animate-transform');
       const zoom = obj.wheelDelta / 12;
       if(zoom > 0 ) {
         this.$data.fullViewZoom += 0.1;
-      } else {
-        if (this.$data.fullViewZoom <= 1) {
-          return false;
-        }
+      } else if (this.$data.fullViewZoom > 1) {
         this.$data.fullViewZoom -= 0.1;
       }
+      this.$data.animateTimer = setTimeout(() => {
+        obj.target.classList.add('animate-transform');
+      }, 400)
     },
     /**
      * 重置大小
@@ -76,7 +106,6 @@ export default {
      */
     mouseMove(e) {
       e.preventDefault();
-      console.log(e);
       this.$data.fullImageMoveX += e.movementX;
       this.$data.fullImageMoveY += e.movementY;
     },
@@ -126,6 +155,45 @@ export default {
       if (this.$data.listActiveIndex < this.thumb.length - 1) {
         this.switchActiveIndex(this.$data.listActiveIndex + 1);
       }
+    },
+    handleFullScreenChange() {
+      const isFullscreen = document.fullScreen||document.mozFullScreen||document.webkitIsFullScreen;
+      if (!isFullscreen && this.$data.fullPlayTimer) {
+        clearInterval(this.$data.fullPlayTimer);
+        this.$data.fullPlayTimer = null;
+      }
+    },
+    /**
+     * 监听全屏状态的变化
+     */
+    addFullScreenListener() {
+      document.addEventListener("fullscreenchange", (e) => {
+        this.handleFullScreenChange();
+      });
+      document.addEventListener("mozfullscreenchange", (e) => {
+         this.handleFullScreenChange();
+      });
+      document.addEventListener("webkitfullscreenchange", (e) => {
+         this.handleFullScreenChange();
+      });
+      document.addEventListener("msfullscreenchange", (e) => {
+         this.handleFullScreenChange();
+      });
+    },
+    /**
+     * 点击播放按钮进入全拼播放
+     */
+    fullScreenPlay() {
+      this.fullScreen(this.$el.querySelector('.full-image'));
+      this.$data.fullPlayTimer = setInterval(() => {
+        const currIndex = this.$data.listActiveIndex;
+        if (currIndex >= this.thumb.length - 1) {
+          this.$data.listActiveIndex = 0;
+        } else {
+          this.$data.listActiveIndex = currIndex + 1;
+        }
+        this.switchActiveIndex(this.$data.listActiveIndex);
+      }, 2000);
     }
   }
 };

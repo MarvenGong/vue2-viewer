@@ -388,3 +388,6 @@
   transition: width .5s, height .5s;
   transform-origin: 50% 50%;
 }
+.full-image.animate-transform{
+  transition: transform .5s;
+}
