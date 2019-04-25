@@ -1,4 +1,7 @@
 # vue2-viewer
+## github仓库地址
+
+[点击前往vue2-viewer github地址](https://github.com/MarvenGong/vue2-viewer)
 
 > vue2-viewer 是一款强大的图像浏览插件，可以实现图像的放大预览，旋转，任意比例放大和缩小等功能
 
@@ -6,6 +9,11 @@ vue2-viewer 是viewer.js vue的实现，效果以及样式完全移植自viewer.
 [http://fengyuanchen.github.io/viewer/]
 
 插件中所有的效果均大量地使用了css3的新特性替换了viewer.js中的js动画，所以vue2-viewer主要实用场景是现代浏览器中。
+
+## 版本说明
+
+- 0.0.1 修改了放大后图片的标题无法显示的问题，新增title组件属性
+- 0.1.0 正式上线版本
 
 ## 使用文档
 #### 安装
@@ -29,6 +37,7 @@ props
 :-: | :-: | :-: | :-:
 thumb | 要显示的小图的链接 | string | true
 full | 点击放大后的大图链接 | string | true
+title | 点击放大后大图下面要展示的图片说明 | string | false
 
 示例：
 ~~~html
@@ -59,6 +68,7 @@ props
 :-: | :-: | :-: | :-:
 thumb | 要显示的小图列表的链接数组 | array | true
 full | 点击放大后的大图的链接数组 | array | true
+title | 点击放大后大图下面要展示的图片说明数组,与图片一一对应 | array | false
 list-ul-class | 默认小图的列表外层ul的自定义class 用于自定义列表的样式，包括ul内部的slot的内容的样式都可以通过这个方式自定义 | string | false
 
 Scoped Slot

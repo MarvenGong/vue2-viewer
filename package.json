@@ -1,7 +1,7 @@
 {
   "name": "vue2-viewer",
   "description": "viewer图片查看器的vue2.0版本实现，可以查看单个图片或者图片列表",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "01477209 <gongminghua@haier.com>",
   "license": "MIT",
   "private": false,
@@ -18,7 +18,7 @@
   "dependencies": {
     "vue": "^2.5.11",
     "vue2-animate": "^2.1.0",
-    "vue2-viewer": "^0.0.5"
+    "vue2-viewer": "0.1.0"
   },
   "browserslist": [
     "> 1%",

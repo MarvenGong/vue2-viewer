@@ -25,7 +25,7 @@
         </div>
         <div class="viewer-footer">
           <div class="viewer-title">
-          这是标题 ({{fullImageWidth}} &times; {{fullImageHeight}})
+          {{multiple ? title[listActiveIndex] || '-' : title}} ({{fullImageWidth}} &times; {{fullImageHeight}})
           </div>
           <div class="viewer-toolbar">
             <ul>
@@ -100,6 +100,10 @@ export default {
     listUlClass: {
       type: String,
       required: false
+    },
+    title: {
+      required: false,
+      default: '-'
     }
   },
   computed: {

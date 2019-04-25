@@ -4,11 +4,13 @@
     <h2>单张图</h2>
     <vue-viewer style="display: inline-block"
       :thumb="image"
+      title='单张图实例'
       :full="image">
     </vue-viewer>
     <h2>多张图</h2>
     <vue-viewer multiple
       :thumb="imageList"
+      :title='multiTitles'
       list-ul-class="image-list"
       :full="imageList">
       <template slot-scope="target">
@@ -29,7 +31,8 @@ export default {
         'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550224739247&di=512032866bea6329b1e46c735d50ac8b&imgtype=0&src=http%3A%2F%2Fimglf2.ph.126.net%2FdHH6OM2rD8JucPGAotUfag%3D%3D%2F6608219914074710297.jpg',
         'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=488030022,1694816207&fm=173&app=25&f=JPEG?w=580&h=347&s=A08FB35A5E0616C664F5631C030010D6',
         'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2574767313,3929397124&fm=173&app=25&f=JPEG?w=580&h=868&s=B784EEA3460236E17A1F137F0300A058'
-      ]
+      ],
+      multiTitles: ['多图1', '多图2']
     }
   },
   methods: {
