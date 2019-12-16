@@ -10,6 +10,8 @@ vue2-viewer 是viewer.js vue的实现，效果以及样式完全移植自viewer.
 
 插件中所有的效果均大量地使用了css3的新特性替换了viewer.js中的js动画，所以vue2-viewer主要实用场景是现代浏览器中。
 
+## 演示地址
+[戳这里前往view2-viewer演示地址>>](https://marvengong.github.io/vue2-viewer/dist/)
 ## 版本说明
 - 0.2.0 更换脚手架，修改图片切换后状态没重置的问题
 - 0.1.0 正式上线版本
