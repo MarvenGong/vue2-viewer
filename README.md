@@ -13,7 +13,7 @@ vue2-viewer 是viewer.js vue的实现，效果以及样式完全移植自viewer.
 ## 演示地址
 [戳这里前往view2-viewer演示地址>>](https://marvengong.github.io/vue2-viewer/dist/)
 ## 版本说明
-- 0.2.0 更换脚手架，修改图片切换后状态没重置的问题
+- 1.0.1 更换脚手架，修改图片切换后状态没重置的问题
 - 0.1.0 正式上线版本
 - 0.0.1 修改了放大后图片的标题无法显示的问题，新增title组件属性
 
