@@ -16,10 +16,11 @@
     <transition name="fade"
       enter-active-class="fadeIn"
       leave-active-class="fadeOut">
-      <div v-show="fullViewerVisible" class="viewer-container viewer-backdrop viewer-fixed viewer-fade viewer-transition viewer-in" touch-action="none" style="z-index: 2015;">
+      <div v-show="fullViewerVisible" class="viewer-container viewer-backdrop viewer-fixed viewer-fade viewer-transition viewer-in"
+        touch-action="none" style="z-index: 2015;">
         <div class="viewer-canvas" data-viewer-action="hide">
-          <img ref="fullImage" @mousewheel="toggleZoomFullImage" 
-            :src="Array.isArray(full) ? full[listActiveIndex] : full" 
+          <img ref="fullImage" @mousewheel="toggleZoomFullImage"
+            :src="Array.isArray(full) ? full[listActiveIndex] : full"
             id="full-image" alt="" class="viewer-move full-image animate-transform"
             :style="fullImageStyle" />
         </div>
@@ -46,9 +47,11 @@
             <ul class="viewer-list viewer-transition" :style="listStyle">
               <li v-for="(item, index) in thumb"
                 :key="index"
-                @click="switchActiveIndex(index)" 
+                @click="switchActiveIndex(index)"
                 :class="{'viewer-active': listActiveIndex === index}">
-                <img :src="item" role="button" data-viewer-action="view" data-index="0" data-original-url="images/tibet-1.jpg" alt="Cuo Na Lake" data-filled="true" style="width: 50px; height: 50px; transform: translateX(-10px);" />
+                <img :src="item" role="button" data-viewer-action="view" data-index="0"
+                  data-original-url="images/tibet-1.jpg" alt="Cuo Na Lake" data-filled="true"
+                  style="width: 50px; height: 50px; transform: translateX(-10px);" />
               </li>
             </ul>
           </div>
@@ -61,7 +64,6 @@
       </div>
     </transition>
   </span>
-  
 </template>
 <script>
 import MxinMethods from './mixin-methods';
@@ -84,7 +86,7 @@ export default {
       fullImageScaleX: 0,
       fullImageScaleY: 0,
       listActiveIndex: 0
-    }
+    };
   },
   props: {
     thumb: {
@@ -116,21 +118,22 @@ export default {
     // 大图样式
     fullImageStyle() {
       return {
-        transform: `scale(${this.$data.fullViewZoom}) rotate(${this.$data.fullImageRotateX}deg) ${this.$data.fullImageScaleX === 0 ? "" : "scaleX(" + -1 + ")" } ${this.$data.fullImageScaleY === 0 ? "" : "scaleY(" + -1 + ")" }`,
+        // eslint-disable-next-line max-len
+        transform: `scale(${this.$data.fullViewZoom}) rotate(${this.$data.fullImageRotateX}deg) ${this.$data.fullImageScaleX === 0 ? '' : 'scaleX(' + -1 + ')' } ${this.$data.fullImageScaleY === 0 ? '' : 'scaleY(' + -1 + ')' }`,
         width: this.$data.fullImageWidth + 'px',
         height: this.$data.fullImageHeight + 'px',
         'margin-left': this.fullImageMarginLeft + 'px',
         'margin-top': this.fullImageMarginTop + 'px',
         position: 'absolute',
         left: '50%', top: '50%'
-      }
+      };
     },
     // 列表的宽度
     listStyle() {
       return {
         width: Array.isArray(this.thumb) ? this.thumb.length * 31 + 'px' : 0,
         marginLeft: document.body.clientWidth / 2 - (this.$data.listActiveIndex + 1) * 31 + 'px'
-      }
+      };
     }
   },
   methods: {},
@@ -144,6 +147,6 @@ export default {
       document.body.removeEventListener('mousemove', this.mouseMove);
     });
   }
-}
+};
 </script>
 <style src="./style.css" scoped></style>

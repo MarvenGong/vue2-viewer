@@ -1,44 +1,36 @@
 {
   "name": "vue2-viewer",
-  "description": "viewer图片查看器的vue2.0版本实现，可以查看单个图片或者图片列表",
-  "version": "0.1.2",
-  "author": "01477209 <gongminghua@haier.com>",
-  "license": "MIT",
-  "private": false,
-  "main": "dist/vue2-viewer.js",
-  "keywords": [
-    "viewer",
-    "image-viewer",
-    "vue图片预览"
-  ],
+  "version": "0.2.0",
+  "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue2-viewer --dest lib packages/index.js"
   },
   "dependencies": {
-    "vue": "^2.5.11",
-    "vue2-animate": "^2.1.0",
-    "vue2-viewer": "0.1.1"
+    "core-js": "^3.4.3",
+    "vue": "^2.6.10",
+    "vue2-animate": "^2.1.0"
+  },
+  "keywords": [
+    "viewer",
+    "vue2-viewer",
+    "vue图片预览"
+  ],
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "last 2 versions"
   ],
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "cross-env": "^5.0.5",
-    "css-loader": "^0.28.7",
-    "file-loader": "^1.1.4",
-    "utils": "^0.3.1",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
-  },
   "bugs": {
     "url": "https://github.com/MarvenGong/vue2-viewer/issues"
   },
