@@ -44,7 +44,7 @@
             </ul>
           </div>
           <div class="viewer-navbar" v-show="multiple">
-            <ul class="viewer-list viewer-transition" :style="listStyle">
+            <ul v-if="multiple" class="viewer-list viewer-transition" :style="listStyle">
               <li v-for="(item, index) in thumb"
                 :key="index"
                 @click="switchActiveIndex(index)"

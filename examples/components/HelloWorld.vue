@@ -26,12 +26,12 @@ export default {
   data() {
     return {
       msg: 'vue2-viewer-demo',
-      image: 'http://fastmock.cn-bj.ufileos.com/fastmock-apis.jpg',
+      image: '/images/girl.jpg',
       imageList: [
         // eslint-disable-next-line max-len
-        'http://fastmock.cn-bj.ufileos.com/fastmock-apis.jpg',
-        'http://fastmock.cn-bj.ufileos.com/fastmock-postman.png',
-        'http://fastmock.cn-bj.ufileos.com/fastmock-apis.jpg'
+        '/images/girl.jpg',
+        '/images/girl2.jpg',
+        '/images/girl3.jpg'
       ],
       multiTitles: ['多图1', '多图2']
     };
