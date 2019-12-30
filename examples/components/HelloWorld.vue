@@ -26,12 +26,12 @@ export default {
   data() {
     return {
       msg: 'vue2-viewer-demo',
-      image: '/images/girl.jpg',
+      image: 'http://vue2-viewer.cn-bj.ufileos.com/girl.jpg',
       imageList: [
         // eslint-disable-next-line max-len
-        '/images/girl.jpg',
-        '/images/girl2.jpg',
-        '/images/girl3.jpg'
+        'http://vue2-viewer.cn-bj.ufileos.com/girl2.jpg',
+        'http://vue2-viewer.cn-bj.ufileos.com/girl.jpg',
+        'http://vue2-viewer.cn-bj.ufileos.com/girl3.jpg'
       ],
       multiTitles: ['多图1', '多图2']
     };
