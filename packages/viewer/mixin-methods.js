@@ -27,10 +27,11 @@ export default {
       if (!img) return false;
       img.style.display = 'none';
       setTimeout(() => {
-        let fullImageSizeAry = this.getImgNaturalStyle(img);
-        this.$data.fullImageWidth = fullImageSizeAry[0];
-        this.$data.fullImageHeight = fullImageSizeAry[1];
-        img.style.display = '';
+        this.getImgNaturalStyle(img).then(({ w, h }) => {
+          this.$data.fullImageWidth = w;
+          this.$data.fullImageHeight = h;
+          img.style.display = '';
+        })
       }, 300);
     },
     /**
@@ -89,18 +90,20 @@ export default {
      * 获取src指向的图片的宽高尺寸
      */
     getImgNaturalStyle(img, callback) {
-      var nWidth, nHeight;
-      if (img.naturalWidth) { // 现代浏览器
-        nWidth = img.naturalWidth;
-        nHeight = img.naturalHeight;
-      } else {  // IE6/7/8
-        var image = new Image();
-        image.src = img.src;
-        image.onload = function() {
-          callback(image.width, image.height);
-        };
-      }
-      return [nWidth, nHeight];
+      return new Promise(resolve => {
+        var nWidth, nHeight;
+        if (img.naturalWidth) { // 现代浏览器
+          nWidth = img.naturalWidth;
+          nHeight = img.naturalHeight;
+          resolve({ w: nWidth, h: nHeight })
+        } else {  // IE6/7/8
+          var image = new Image();
+          image.src = img.src;
+          image.onload = function () {
+            resolve({ w: image.width, h: image.height })
+          };
+        }
+      })
     },
     /**
      * 拖拽大图
