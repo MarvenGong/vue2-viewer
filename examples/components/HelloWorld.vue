@@ -26,12 +26,12 @@ export default {
   data() {
     return {
       msg: 'vue2-viewer-demo',
-      image: 'http://vue2-viewer.cn-bj.ufileos.com/girl.jpg',
+      image: 'http://static.fastmock.site/images/vue2-viewer/girl.jpg',
       imageList: [
         // eslint-disable-next-line max-len
-        'http://vue2-viewer.cn-bj.ufileos.com/girl2.jpg',
-        'http://vue2-viewer.cn-bj.ufileos.com/girl.jpg',
-        'http://vue2-viewer.cn-bj.ufileos.com/girl3.jpg'
+        'http://static.fastmock.site/images/vue2-viewer/girl2.jpg',
+        'http://static.fastmock.site/images/vue2-viewer/girl.jpg',
+        'http://static.fastmock.site/images/vue2-viewer/girl3.jpg'
       ],
       multiTitles: ['多图1', '多图2']
     };

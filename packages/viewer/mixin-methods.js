@@ -31,7 +31,7 @@ export default {
           this.$data.fullImageWidth = w;
           this.$data.fullImageHeight = h;
           img.style.display = '';
-        })
+        });
       }, 300);
     },
     /**
@@ -95,15 +95,15 @@ export default {
         if (img.naturalWidth) { // 现代浏览器
           nWidth = img.naturalWidth;
           nHeight = img.naturalHeight;
-          resolve({ w: nWidth, h: nHeight })
+          resolve({ w: nWidth, h: nHeight });
         } else {  // IE6/7/8
           var image = new Image();
           image.src = img.src;
-          image.onload = function () {
-            resolve({ w: image.width, h: image.height })
+          image.onload = function() {
+            resolve({ w: image.width, h: image.height });
           };
         }
-      })
+      });
     },
     /**
      * 拖拽大图
